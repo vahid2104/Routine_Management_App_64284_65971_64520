@@ -1,5 +1,15 @@
 import Task from "../models/Task.js";
 
+export const getTasksByProject = async (req, res) => {
+  const { projectId } = req.params;
+  try {
+    const tasks = await Task.find({ projectId, userId: req.user._id }); 
+    res.json(tasks);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+
 export const getTasks = async (req, res) => {
   const tasks = await Task.find({
     projectId: req.params.projectId,
