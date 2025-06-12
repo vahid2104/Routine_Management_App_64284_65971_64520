@@ -11,7 +11,9 @@ dotenv.config();
 connectDB();
 
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: "https://dynamic-alfajores-6a7660.netlify.app", 
+}));
 app.use(express.json());
 
 app.use('/api/projects', projectRoutes);
