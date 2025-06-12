@@ -1,9 +1,14 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
 const projectSchema = new mongoose.Schema({
-  title: { type: String, required: true },
+  title: String,
   description: String,
-  dueDate: Date,
+  userId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+    required: true
+  }
 });
 
-export default mongoose.model('Project', projectSchema);
+export default mongoose.model("Project", projectSchema);
+
